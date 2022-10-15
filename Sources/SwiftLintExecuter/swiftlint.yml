@@ -1,6 +1,5 @@
 opt_in_rules:
   - accessibility_label_for_image
-  - accessibility_trait_for_button
   - comma_inheritance
   - contains_over_filter_count
   - contains_over_filter_is_empty
@@ -8,7 +7,6 @@ opt_in_rules:
   - contains_over_range_nil_comparison
   - fatal_error_message
   - first_where
-  - if_let_shadowing
   - last_where
   - lower_acl_than_parent
   - nslocalizedstring_require_bundle
