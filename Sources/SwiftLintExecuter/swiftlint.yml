@@ -26,6 +26,7 @@ disabled_rules:
   - duplicate_enum_cases
   - identifier_name
   - redundant_void_return
+  - line_length
 
 excluded:
   - Carthage
