@@ -1,8 +1,5 @@
 import Foundation
 import PackagePlugin
-#if canImport(XcodeProjectPlugin)
-import XcodeProjectPlugin
-#endif
 
 @main
 struct LintSwiftPlugin {
@@ -30,13 +27,3 @@ extension LintSwiftPlugin: BuildToolPlugin {
         return try createBuildCommands(context: context, targetName: target.name, inputPath: target.directory.string)
     }
 }
-
-#if canImport(XcodeProjectPlugin)
-
-extension LintSwiftPlugin: XcodeBuildToolPlugin {
-    func createBuildCommands(context: XcodePluginContext, target: XcodeTarget) throws -> [Command] {
-        return try createBuildCommands(context: context, targetName: target.displayName, inputPath: context.xcodeProject.directory.string)
-    }
-}
-
-#endif

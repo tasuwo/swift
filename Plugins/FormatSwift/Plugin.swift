@@ -1,8 +1,5 @@
 import Foundation
 import PackagePlugin
-#if canImport(XcodeProjectPlugin)
-import XcodeProjectPlugin
-#endif
 
 @main
 struct FormatSwiftPlugin {
@@ -47,22 +44,3 @@ extension FormatSwiftPlugin: CommandPlugin {
         try perform(context: context, inputPaths: inputPaths, arguments: arguments)
     }
 }
-
-#if canImport(XcodeProjectPlugin)
-
-extension FormatSwiftPlugin: XcodeCommandPlugin {
-    func performCommand(context: XcodePluginContext, arguments: [String]) throws {
-        var argumentExtractor = ArgumentExtractor(arguments)
-
-        let selectedTargetNames = Set(argumentExtractor.extractOption(named: "target"))
-        let inputPaths = context.xcodeProject.targets.lazy
-            .filter { selectedTargetNames.contains($0.displayName) }
-            .flatMap(\.inputFiles)
-            .map(\.path.string)
-            .filter { $0.hasSuffix(".swift") }
-
-        try perform(context: context, inputPaths: Array(inputPaths), arguments: arguments)
-    }
-}
-
-#endif
