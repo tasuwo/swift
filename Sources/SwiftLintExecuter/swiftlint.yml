@@ -1,6 +1,4 @@
-opt_in_rules:
-  - accessibility_label_for_image
-  - comma_inheritance
+only_rules:
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - contains_over_first_not_nil
@@ -10,27 +8,16 @@ opt_in_rules:
   - last_where
   - lower_acl_than_parent
   - nslocalizedstring_require_bundle
-  - raw_value_for_camel_cased_codable_enum
-  - redundant_type_annotation
+  - reduce_boolean
+  - redundant_discardable_let
+  - shorthand_operator
   - sorted_first_last
   - switch_case_on_newline
+  - todo
   - toggle_bool
   - unused_declaration
   - unused_import
-disabled_rules:
-  - cyclomatic_complexity
-  - nesting
-  - opening_brace
-  - multiple_closures_with_trailing_closure
-  - trailing_comma
-  - duplicate_enum_cases
-  - identifier_name
-  - redundant_void_return
-  - unused_setter_value
-  - line_length
-  - type_body_length
-  - file_length
-  - function_body_length
+  - unused_enumerated
 
 excluded:
   - Carthage
