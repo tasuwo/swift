@@ -34,10 +34,7 @@ let package = Package(
         .executableTarget(
             name: "SwiftFormatExecuter",
             dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")],
-            resources: [.process("config.swiftformat")],
-            plugins: [
-                .plugin(name: "LintSwift")
-            ]
+            resources: [.process("config.swiftformat")]
         ),
         .binaryTarget(
             name: "swiftformat",
