@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 
 import PackageDescription
 
@@ -10,7 +10,7 @@ let package = Package(
         .plugin(name: "LintSwift", targets: ["LintSwift"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMajor(from: "1.1.4"))
+        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMajor(from: "1.2.3"))
     ],
     targets: [
         // MARK: - Format
@@ -38,8 +38,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "swiftformat",
-            url: "https://github.com/nicklockwood/SwiftFormat/releases/download/0.50.2/swiftformat.artifactbundle.zip",
-            checksum: "a61e23a0d32243f4826924a21d7d2b5c64946052e55e9e27387707882570258e"
+            url: "https://github.com/nicklockwood/SwiftFormat/releases/download/0.52.10/swiftformat.artifactbundle.zip",
+            checksum: "6c11b2d50ee6f914ee87e891ad4e4a32e1f82993a8ccecaebd3285ac767b86ce"
         ),
 
         // MARK: - Lint
@@ -59,8 +59,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SwiftLintBinary",
-            url: "https://github.com/realm/SwiftLint/releases/download/0.49.1/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "227258fdb2f920f8ce90d4f08d019e1b0db5a4ad2090afa012fd7c2c91716df3"
+            url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
+            checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"
         ),
     ]
 )
