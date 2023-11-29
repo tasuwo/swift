@@ -25,7 +25,4 @@ excluded:
   - SourcePackages
   - build
 
-colon:
-  apply_to_dictionaries: false
-
 indentation: 4
