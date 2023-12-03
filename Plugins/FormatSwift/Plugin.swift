@@ -61,7 +61,7 @@ extension FormatSwiftPlugin: XcodeCommandPlugin {
             .map(\.path.string)
             .filter { $0.hasSuffix(".swift") }
 
-        try perform(context: context, inputPaths: Array(inputPaths), arguments: arguments)
+        try perform(context: context, inputPaths: Array(inputPaths), arguments: argumentExtractor.remainingArguments)
     }
 }
 
