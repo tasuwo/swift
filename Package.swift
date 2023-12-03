@@ -8,6 +8,7 @@ let package = Package(
     products: [
         .plugin(name: "FormatSwift", targets: ["FormatSwift"]),
         .plugin(name: "LintSwift", targets: ["LintSwift"]),
+        .plugin(name: "SwiftGen", targets: ["SwiftGen"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMajor(from: "1.2.3"))
@@ -62,5 +63,25 @@ let package = Package(
             url: "https://github.com/realm/SwiftLint/releases/download/0.54.0/SwiftLintBinary-macos.artifactbundle.zip",
             checksum: "963121d6babf2bf5fd66a21ac9297e86d855cbc9d28322790646b88dceca00f1"
         ),
+
+        // MARK: - SwiftGen
+
+        .plugin(
+            name: "SwiftGen",
+            capability: .command(
+                intent: .custom(
+                    verb: "generate-code-for-resources",
+                    description: "Creates type-save for all your resources"),
+                permissions: [
+                    .writeToPackageDirectory(reason: "This command generates source code")
+                ]
+            ),
+            dependencies: ["swiftgen"]
+        ),
+        .binaryTarget(
+            name: "swiftgen",
+            url: "https://github.com/SwiftGen/SwiftGen/releases/download/6.6.2/swiftgen-6.6.2.artifactbundle.zip",
+            checksum: "7586363e24edcf18c2da3ef90f379e9559c1453f48ef5e8fbc0b818fbbc3a045"
+        )
     ]
 )
