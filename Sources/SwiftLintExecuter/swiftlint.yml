@@ -12,7 +12,6 @@ only_rules:
   - redundant_discardable_let
   - shorthand_operator
   - sorted_first_last
-  - switch_case_on_newline
   - todo
   - toggle_bool
   - unused_declaration
