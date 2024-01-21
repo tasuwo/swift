@@ -11,15 +11,23 @@ struct LintSwiftPlugin {
     }
 
     func createBuildCommands(context: Context, targetName: String, inputPath: String) throws -> [Command] {
+         var arguments: [CustomStringConvertible] = [
+            "--path", inputPath,
+            "--binary-path", try context.tool(named: "swiftlint").path.string,
+        ]
+
+        if ProcessInfo.processInfo.environment["CI_XCODE_CLOUD"] == "TRUE" {
+            arguments.append("--no-cache")
+        } else {
+            arguments.append("--cache-path")
+            arguments.append(context.pluginWorkDirectory.appending(["swiftlint.cache"]).string)
+        }
+
         return [
             .buildCommand(
                 displayName: "Running SwiftLint for \(targetName)",
                 executable: try context.tool(named: "SwiftLintExecuter").path,
-                arguments: [
-                    "--path", inputPath,
-                    "--binary-path", try context.tool(named: "swiftlint").path.string,
-                    "--cache-path", context.pluginWorkDirectory.appending(["swiftlint.cache"]).string,
-                ]
+                arguments: arguments
             )
         ]
     }

@@ -12,6 +12,9 @@ struct SwiftLintExecuter: ParsableCommand {
     @Option
     var cachePath: String?
 
+    @Flag
+    var noCache = false
+
     @Option
     var config = Bundle.module.path(forResource: "swiftlint", ofType: "yml")!
 
@@ -23,6 +26,10 @@ struct SwiftLintExecuter: ParsableCommand {
 
         if let cachePath = cachePath {
             arguments += ["--cache-path", cachePath]
+        }
+
+        if noCache {
+            arguments += ["--no-cache"]
         }
 
         arguments.append(path)
